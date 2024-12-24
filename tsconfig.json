@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "typeRoots": ["./node_modules/@types"],
+        "types": ["react", "react-dom"],
+      "target": "es5",
+      "lib": ["dom", "es2015"],
+      "allowJs": true,
+      "jsx": "react-jsx",
+      "strict": true,
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "skipLibCheck": true
+    }
+  }
+  
