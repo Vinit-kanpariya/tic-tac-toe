@@ -103,7 +103,7 @@ const App: React.FC = () => {
   const handleStartGame = () => {
     // Check if both player names are empty or only contain spaces
     if (player1.trim() === '' || player2.trim() === '') {
-      alert("Please enter both players' names.");
+      alert("Please enter both player's names.");
       return; // Prevent starting the game if names are empty
     }
     setGameStarted(true); // Only start the game if both names are valid
@@ -136,6 +136,7 @@ const App: React.FC = () => {
             <input
               type="text"
               placeholder="Enter name"
+              required
               onChange={(e) => setplayer1(e.target.value)}
               className="p-2 border-2 border-gray-300 rounded text-lg"
             />
@@ -145,6 +146,7 @@ const App: React.FC = () => {
             <input
               type="text"
               placeholder="Enter name"
+              required
               onChange={(e) => setplayer2(e.target.value)}
               className="p-2 border-2 border-gray-300 rounded text-lg"
             />
@@ -164,6 +166,15 @@ const App: React.FC = () => {
           <strong>{winner ? (winner === 'X' ? player1 : player2) : "It's a tie!"}</strong>
         </div>
       )}
+
+     {gameStarted && !winner && !gameTied && (
+        <div className="text-xl text-center text-Blue-700 mb-4 mt-5">
+          <strong>
+            {isXNext ? player1 : player2}'s turn ({isXNext ? 'X' : 'O'})
+          </strong>
+        </div>
+      )}
+
 
       {/* Game Board */}
       {gameStarted && (
@@ -187,8 +198,8 @@ const App: React.FC = () => {
       {/* Player Statistics */}
       <div className="mt-6 text-center">
         <p className="pb-1 text-xl">Scoreboard</p>
-        <p className="text-md">{player1}: {player1Wins} Wins</p>
-        <p className="text-md">{player2}: {player2Wins} Wins</p>
+        <p className="text-md"> {player1}: {player1Wins} Wins</p>
+        <p className="text-md"> {player2}: {player2Wins} Wins</p>
       </div>
     </div>
   );
