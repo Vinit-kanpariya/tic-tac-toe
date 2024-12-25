@@ -122,9 +122,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-orange-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-lime-100 flex flex-col items-center justify-center p-4">
       {/* Title centered at the top */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center w-full absolute top-8">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-purple-900 text-center w-full absolute top-8">
         Tic-Tac-Toe
       </h1>
 
@@ -139,7 +139,7 @@ const App: React.FC = () => {
               placeholder="Enter name"
               required
               onChange={(e) => setplayer1(e.target.value)}
-              className="p-2 border-2 border-gray-300 rounded text-lg"
+              className="p-2 border-2 border-purple-700 bg-purple-100 rounded text-lg"
             />
           </div>
           <div className="mb-4">
@@ -150,7 +150,7 @@ const App: React.FC = () => {
               placeholder="Enter name"
               required
               onChange={(e) => setplayer2(e.target.value)}
-              className="p-2 border-2 border-gray-300 rounded text-lg"
+              className="p-2 border-2 border-purple-700 bg-purple-100 rounded text-lg"
             />
           </div>
           <button
@@ -189,7 +189,7 @@ const App: React.FC = () => {
           <div className="mt-4 flex justify-center">
             <button
               onClick={handleRestartFromStart}
-              className="pl-3 pr-3 pt-1 pb-1 text-white bg-purple-800 rounded hover:text-purple-700 hover:bg-purple-100 border-2 border-purple-700 text-lg"
+              className="pl-3 pr-3 pt-1 pb-1 text-white bg-purple-700 rounded hover:text-purple-700 hover:bg-purple-100 border-2 border-purple-700 text-lg"
             >
               Restart
             </button>
