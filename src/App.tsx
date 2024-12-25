@@ -54,13 +54,13 @@ const App: React.FC = () => {
         setplayer2Wins(player2Wins + 1);
       }
       setTimeout(() => {
-        alert(`${gameWinner === 'X' ? player1 : player2} wins! Congratulations!`);
+        alert(`Congratulations! ${gameWinner === 'X' ? player1 : player2} wins!`);
         askForNextGame();
       }, 200);
     } else if (newBoard.every(cell => cell !== null)) {
       setGameTied(true);
       setTimeout(() => {
-        alert("The game ended in a tie!");
+        alert("it's a tie!");
         askForNextGame();
       }, 200);
     }
@@ -83,15 +83,15 @@ const App: React.FC = () => {
     setGameTied(false);
     setIsXNext(true);
   };
-
+  
   // Handle restarting the game from the beginning (name input)
   const handleRestartFromStart = () => {
     setBoard(Array(9).fill(null));
     setWinner(null);
     setGameTied(false);
     setIsXNext(true);
-    setplayer1(player1); // Reset Player X's name
-    setplayer2(player2); // Reset Player O's name
+    setplayer1(''); // Reset Player X's name
+    setplayer2(''); // Reset Player O's name
     setGameStarted(false); // Go back to name input screen
 
     // Reset win counts for both players when the user does not want to continue
@@ -102,8 +102,8 @@ const App: React.FC = () => {
   // Start the game after entering names
   const handleStartGame = () => {
     // Check if both player names are empty or only contain spaces
-    if (player1.valueOf() === '' || player2.valueOf() === '') {
-      alert("Please enter both player's names.");
+    if (player1.valueOf() ==='' || player2.valueOf() === '') {
+      alert("Please enter player's names.");
       return; // Prevent starting the game if names are empty
     }
     setGameStarted(true); // Only start the game if both names are valid
@@ -137,9 +137,9 @@ const App: React.FC = () => {
               id='input1'
               type="text"
               placeholder="Enter name"
-              required
               onChange={(e) => setplayer1(e.target.value)}
-              className="p-2 border-2 border-purple-700 bg-purple-100 rounded text-lg"
+              className="p-2 border-2 border-purple-700 bg-purple-50 rounded text-lg"
+              required
             />
           </div>
           <div className="mb-4">
@@ -148,9 +148,9 @@ const App: React.FC = () => {
               id='input2'
               type="text"
               placeholder="Enter name"
-              required
               onChange={(e) => setplayer2(e.target.value)}
-              className="p-2 border-2 border-purple-700 bg-purple-100 rounded text-lg"
+              className="p-2 border-2 border-purple-700 bg-purple-50 rounded text-lg"
+              required
             />
           </div>
           <button
