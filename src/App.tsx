@@ -8,8 +8,8 @@ const App: React.FC = () => {
   const [board, setBoard] = useState<Board>(Array(9).fill(null)); // 3x3 board
   const [isXNext, setIsXNext] = useState<boolean>(true); // To track whose turn it is
   const [winner, setWinner] = useState<Player>(null); // To track the winner
-  const [player1, setplayer1] = useState<string>('Player 1'); // Player X name
-  const [player2, setplayer2] = useState<string>('Player 2'); // Player O name
+  const [player1, setplayer1] = useState<string>(''); // Player X name
+  const [player2, setplayer2] = useState<string>(''); // Player O name
   const [gameStarted, setGameStarted] = useState<boolean>(false); // To track if game has started
   const [gameTied, setGameTied] = useState<boolean>(false); // To track if the game is tied
   const [player1Wins, setplayer1Wins] = useState<number>(0); // Player X win count
@@ -90,8 +90,8 @@ const App: React.FC = () => {
     setWinner(null);
     setGameTied(false);
     setIsXNext(true);
-    setplayer1('Player 1'); // Reset Player X's name
-    setplayer2('Player 2'); // Reset Player O's name
+    setplayer1(player1); // Reset Player X's name
+    setplayer2(player2); // Reset Player O's name
     setGameStarted(false); // Go back to name input screen
 
     // Reset win counts for both players when the user does not want to continue
@@ -102,7 +102,7 @@ const App: React.FC = () => {
   // Start the game after entering names
   const handleStartGame = () => {
     // Check if both player names are empty or only contain spaces
-    if (player1.trim() === '' || player2.trim() === '') {
+    if (player1.valueOf() === '' || player2.valueOf() === '') {
       alert("Please enter both player's names.");
       return; // Prevent starting the game if names are empty
     }
@@ -122,7 +122,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-blue-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-orange-100 flex flex-col items-center justify-center p-4">
       {/* Title centered at the top */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center w-full absolute top-8">
         Tic-Tac-Toe
@@ -134,6 +134,7 @@ const App: React.FC = () => {
           <div className="mb-2">
             <label className="text-lg mr-2">Player 1's Name:</label>
             <input
+              id='input1'
               type="text"
               placeholder="Enter name"
               required
@@ -144,6 +145,7 @@ const App: React.FC = () => {
           <div className="mb-4">
             <label className="text-lg mr-2">Player 2's Name:</label>
             <input
+              id='input2'
               type="text"
               placeholder="Enter name"
               required
@@ -153,7 +155,7 @@ const App: React.FC = () => {
           </div>
           <button
             onClick={handleStartGame}
-            className="pr-3 pl-3 pt-1 pb-1 bg-purple-500 text-white rounded hover:bg-purple-700 text-lg"
+            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-purple-100 border-2 border-purple-700 text-lg"
           >
             Start
           </button>
@@ -168,7 +170,7 @@ const App: React.FC = () => {
       )}
 
      {gameStarted && !winner && !gameTied && (
-        <div className="text-xl text-center text-Blue-700 mb-4 mt-5">
+        <div className="text-xl text-center text-purple-700 hover:text-purple-500 mb-4 mt-5">
           <strong>
             {isXNext ? player1 : player2}'s turn ({isXNext ? 'X' : 'O'})
           </strong>
@@ -187,7 +189,7 @@ const App: React.FC = () => {
           <div className="mt-4 flex justify-center">
             <button
               onClick={handleRestartFromStart}
-              className="pl-3 pr-3 pt-1 pb-1 bg-purple-500 text-white rounded hover:bg-purple-700 text-lg"
+              className="pl-3 pr-3 pt-1 pb-1 text-white bg-purple-800 rounded hover:text-purple-700 hover:bg-purple-100 border-2 border-purple-700 text-lg"
             >
               Restart
             </button>
