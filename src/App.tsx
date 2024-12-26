@@ -164,7 +164,7 @@ const App: React.FC = () => {
           </div>
           <button
             onClick={handleStartGame}
-            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-pink-200 border-2 border-purple-700 text-lg"
+            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-purple-200 border-2 border-purple-700 text-lg"
           >
             Start
           </button>
