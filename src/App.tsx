@@ -83,7 +83,7 @@ const App: React.FC = () => {
     setGameTied(false);
     setIsXNext(true);
   };
-  
+
   // Handle restarting the game from the beginning (name input)
   const handleRestartFromStart = () => {
     setBoard(Array(9).fill(null));
@@ -107,6 +107,13 @@ const App: React.FC = () => {
       return; // Prevent starting the game if names are empty
     }
     setGameStarted(true); // Only start the game if both names are valid
+  };
+
+  // Handle key press event for starting the game
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleStartGame(); // Start the game if Enter is pressed
+    }
   };
 
   // Render the board
@@ -138,6 +145,7 @@ const App: React.FC = () => {
               type="text"
               placeholder="Enter name"
               onChange={(e) => setplayer1(e.target.value)}
+              onKeyPress={handleKeyPress}
               className="p-2 border-2 border-purple-700 bg-purple-50 rounded text-lg"
               required
             />
@@ -149,13 +157,14 @@ const App: React.FC = () => {
               type="text"
               placeholder="Enter name"
               onChange={(e) => setplayer2(e.target.value)}
+              onKeyPress={handleKeyPress}
               className="p-2 border-2 border-purple-700 bg-purple-50 rounded text-lg"
               required
             />
           </div>
           <button
             onClick={handleStartGame}
-            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-purple-100 border-2 border-purple-700 text-lg"
+            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-pink-200 border-2 border-purple-700 text-lg"
           >
             Start
           </button>
