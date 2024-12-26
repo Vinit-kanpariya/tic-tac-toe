@@ -164,7 +164,7 @@ const App: React.FC = () => {
           </div>
           <button
             onClick={handleStartGame}
-            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-purple-200 border-2 border-purple-700 text-lg"
+            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-purple -200 border-2 border-purple-700 text-lg"
           >
             Start
           </button>
@@ -209,8 +209,12 @@ const App: React.FC = () => {
       {/* Player Statistics */}
       <div className="mt-6 text-center">
         <p className="pb-1 text-xl">Scoreboard</p>
-        <p className="text-md"> {player1}: {player1Wins} Wins</p>
-        <p className="text-md"> {player2}: {player2Wins} Wins</p>
+        <p className="text-md">
+          {player1}: {player1Wins} Wins {player1Wins > player2Wins ? '🏆' : player1Wins < player2Wins ? '' : '🤝'}
+        </p>
+        <p className="text-md">
+          {player2}: {player2Wins} Wins {player2Wins > player1Wins ? '🏆' : player2Wins < player1Wins ? '' : '🤝'}
+        </p>
       </div>
     </div>
   );
