@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { GiTrophyCup } from "react-icons/gi";
+import { FaHandshake } from "react-icons/fa6";
 
 // Type definitions for the board state
 type Player = 'X' | 'O' | null;
@@ -129,7 +131,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-lime-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-pink-100 flex flex-col items-center justify-center p-4">
       {/* Title centered at the top */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-purple-900 text-center w-full absolute top-8">
         Tic-Tac-Toe
@@ -164,7 +166,7 @@ const App: React.FC = () => {
           </div>
           <button
             onClick={handleStartGame}
-            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-purple -200 border-2 border-purple-700 text-lg"
+            className="pr-3 pl-3 pt-1 pb-1 bg-purple-700 text-white rounded hover:text-purple-700 hover:bg-purple-200 border-2 border-purple-700 text-lg"
           >
             Start
           </button>
@@ -198,7 +200,7 @@ const App: React.FC = () => {
           <div className="mt-4 flex justify-center">
             <button
               onClick={handleRestartFromStart}
-              className="pl-3 pr-3 pt-1 pb-1 text-white bg-purple-700 rounded hover:text-purple-700 hover:bg-purple-100 border-2 border-purple-700 text-lg"
+              className="pl-3 pr-3 pt-1 pb-1 text-white bg-purple-700 rounded hover:text-purple-700 hover:bg-purple-200 border-2 border-purple-700 text-lg"
             >
               Restart
             </button>
@@ -210,10 +212,10 @@ const App: React.FC = () => {
       <div className="mt-6 text-center">
         <p className="pb-1 text-xl">Scoreboard</p>
         <p className="text-md">
-          {player1}: {player1Wins} Wins {player1Wins > player2Wins ? '🏆' : player1Wins < player2Wins ? '' : '🤝'}
+          {player1}: {player1Wins} Wins {player1Wins > player2Wins ? <GiTrophyCup className="inline" /> : player1Wins < player2Wins ? '' : <FaHandshake className="inline" />}
         </p>
         <p className="text-md">
-          {player2}: {player2Wins} Wins {player2Wins > player1Wins ? '🏆' : player2Wins < player1Wins ? '' : '🤝'}
+          {player2}: {player2Wins} Wins {player2Wins > player1Wins ? <GiTrophyCup className="inline" /> : player2Wins < player1Wins ? '' : <FaHandshake className="inline" />}
         </p>
       </div>
     </div>
